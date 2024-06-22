@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org" lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>預金額入力画面</title>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #f0f8ff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        flex-direction: column;
+        margin: 0;
+      }
+      h1 {
+        font-size: 2rem;
+        color: #333;
+      }
+      .button-container {
+        margin-top: 20px;
+      }
+      button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 15px 30px;
+        font-size: 1rem;
+        border-radius: 5px;
+        cursor: pointer;
+        margin: 10px;
+        transition: background-color 0.3s;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>預金額を入力して下さい</h1>
+    <div class="button-container">
+      <form th:action="@{/Account/depositToAccount}" method="post">
+        <input type="hidden" name="accountNum" th:value="${accountNumber}" />
+        <input type="number" name="amount" id="amount" />
+        <button type="submit">決定</button>
+      </form>
+      <a th:href="@{/}">戻る</a>
+    </div>
+  </body>
+</html>

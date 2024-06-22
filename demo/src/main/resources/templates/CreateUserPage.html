@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org" lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>新規ユーザー作成画面</title>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #f0f8ff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        flex-direction: column;
+        margin: 0;
+      }
+      h1 {
+        font-size: 2rem;
+        color: #333;
+      }
+      .button-container {
+        display: flex;
+        gap: 10px;
+        flex-direction: column;
+        margin-top: 20px;
+        align-items: center;
+      }
+      button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 15px 30px;
+        font-size: 1rem;
+        border-radius: 5px;
+        cursor: pointer;
+        margin: 10px;
+        transition: background-color 0.3s;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      input {
+        padding: 10px;
+        font-size: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>ユーザーを作成します。ユーザー情報を入力してください</h1>
+    <div class="button-container">
+      <form th:action="@{/login/CreateUser}" method="post">
+        <input type="text" name="name" placeholder="ユーザー名" />
+        <input type="password" name="password" placeholder="パスワード" />
+        <button type="submit">ユーザーの作成</button>
+      </form>
+    </div>
+  </body>
+</html>

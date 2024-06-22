@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org" lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>引出エラー画面</title>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #f0f8ff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        flex-direction: column;
+        margin: 0;
+      }
+      h1 {
+        font-size: 2rem;
+        color: #f50808;
+      }
+      .button-container {
+        margin-top: 20px;
+      }
+      button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 15px 30px;
+        font-size: 1rem;
+        border-radius: 5px;
+        cursor: pointer;
+        margin: 10px;
+        transition: background-color 0.3s;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      .gray-button {
+        background-color: #808080;
+      }
+      .gray-button:hover {
+        background-color: #606060;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>引出額が残高を超えています。</h1>
+
+    <div class="button-container">
+      <form th:action="@{/Account/WithdrawAmountInput}" method="post">
+        <input type="hidden" name="accountNum" th:value="${accountNumber}" />
+        <button type="submit">金額入力</button>
+      </form>
+      <form th:action="@{/End/bye}" method="post">
+        <button type="submit" class="gray-button">終了</button>
+      </form>
+    </div>
+  </body>
+</html>

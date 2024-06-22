@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org" lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>引出完了画面</title>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #f0f8ff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        flex-direction: column;
+        margin: 0;
+      }
+      h1 {
+        font-size: 2rem;
+        color: #333;
+      }
+      .button-container {
+        margin-top: 20px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+      form {
+        display: flex;
+        text-align: center;
+      }
+      button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 15px 30px;
+        font-size: 1rem;
+        border-radius: 5px;
+        cursor: pointer;
+        margin: 10px;
+        transition: background-color 0.3s;
+        width: 100%;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      .gray-button {
+        background-color: #808080;
+      }
+      .gray-button:hover {
+        background-color: #606060;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>引出が完了しました</h1>
+
+    <label>
+      口座残高は
+      <label th:text="${balance}"></label>
+      円です
+    </label>
+
+    <div class="button-container">
+      <form th:action="@{/Account/SelectAccount}" method="post">
+        <input type="hidden" name="accountNumber" th:value="${accountNumber}" />
+        <button type="submit">続けて操作</button>
+      </form>
+      <form th:action="@{/End/bye}" method="post">
+        <button type="submit" class="gray-button">終了</button>
+      </form>
+    </div>
+
+    <a th:href="@{/}">戻る</a>
+  </body>
+</html>

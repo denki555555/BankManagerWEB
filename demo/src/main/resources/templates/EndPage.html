@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org" lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>終了画面</title>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #f0f8ff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        flex-direction: column;
+        margin: 0;
+      }
+      h1 {
+        font-size: 2rem;
+        color: #333;
+      }
+      .button-container {
+        margin-top: 20px;
+      }
+      button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 15px 30px;
+        font-size: 1rem;
+        border-radius: 5px;
+        cursor: pointer;
+        margin: 10px;
+        transition: background-color 0.3s;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+    </style>
+    <script>
+      //ページロード後、5秒待機で次ページへ遷移
+      window.onload = function () {
+        setTimeout(function () {
+          window.location.href = "/";
+        }, 5000); //5000ミリ秒（5秒）
+      };
+    </script>
+  </head>
+  <body>
+    <h1>ご利用ありがとうございました。</br>またのご利用をお待ちしております。</h1>
+  </body>
+</html>
