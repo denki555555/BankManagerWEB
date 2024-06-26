@@ -1,0 +1,8 @@
+services:
+  - type: web
+    name: BankAccountManager
+    env: docker
+    dockerfilePath: Dockerfile
+    buildCommand: "./mvnw clean install"
+    startCommand: "java -jar target/*.jar"
+    autoDeploy: true
