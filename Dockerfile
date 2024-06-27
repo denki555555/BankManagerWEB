@@ -5,7 +5,7 @@ FROM maven:3.6.3-jdk-11 AS build
 WORKDIR /app
 
 # Copy the Maven project files into the container
-COPY pom.xml .
+COPY demo/pom.xml .
 COPY demo/src ./src
 
 # Package the app using Maven
