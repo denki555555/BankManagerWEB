@@ -1,5 +1,5 @@
 # Use an official Maven image to build the app
-FROM maven:3.6.3-jdk-21 AS build
+FROM maven:3.8.5-openjdk-17 AS build
 
 # Set the working directory inside the container
 WORKDIR /app
@@ -12,7 +12,7 @@ COPY demo/src ./src
 RUN mvn clean package -DskipTests
 
 # Use an official OpenJDK image to run the app
-FROM openjdk:21-jre-slim
+FROM openjdk:17-jre-slim
 
 # Set the working directory inside the container
 WORKDIR /app
