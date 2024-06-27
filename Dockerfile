@@ -12,7 +12,7 @@ COPY demo/src ./src
 RUN mvn clean package -DskipTests
 
 # Use an official OpenJDK image to run the app
-FROM openjdk:17-jre-slim
+FROM openjdk:17-slim
 
 # Set the working directory inside the container
 WORKDIR /app
