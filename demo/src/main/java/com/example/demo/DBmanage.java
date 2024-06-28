@@ -15,9 +15,9 @@ import com.example.demo.User.User;
 @Repository
 public class DBmanage {
 
-    static final String url="jdbc:mysql://localhost:3306/BankAccounts";
-    static final String user="user1";
-    static final String password="user1";
+    static final String url="jdbc:postgresql://dpg-cpv8c5tumphs73c7pd1g-a:5432/bankaccounts";
+    static final String user="user2";
+    static final String password="user2";
     
     //DBからアカウント情報を読み込むメソッド
     public ArrayList<Account> getAccountInfoFromDB(){
