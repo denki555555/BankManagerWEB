@@ -33,7 +33,7 @@ public class DBmanage {
             // Create Statement
             stmt=conn.createStatement();
             // Do SQL query
-            String sql="SELECT * FROM BankAccounts";
+            String sql="SELECT * FROM \"BankAccounts\"";
             rs=stmt.executeQuery(sql);
             // Process Result
             while(rs.next()){
@@ -62,7 +62,7 @@ public class DBmanage {
     public void updateAccount(Account account){
 
         try(Connection conn=DriverManager.getConnection(DBmanage.url,DBmanage.user,DBmanage.password);
-            PreparedStatement pstmt = conn.prepareStatement("UPDATE BankAccounts SET accountHolderName=?,Balance=? WHERE accountNumber=?")){
+            PreparedStatement pstmt = conn.prepareStatement("UPDATE \"BankAccounts\" SET accountHolderName=?,Balance=? WHERE accountNumber=?")){
             pstmt.setString(1, account.getAccountHolderName());
             pstmt.setDouble(2, account.getBalance());
             pstmt.setInt(3,account.getAccountNumber());
@@ -81,7 +81,7 @@ public class DBmanage {
     public int insertNewAccount(Account account){
         try (Connection conn=DriverManager.getConnection(DBmanage.url,DBmanage.user,DBmanage.password);
             //DBにINSERTした後、AUTO_INCREMENT設定で自動採番された値を取得しにいく書き方
-            PreparedStatement pstmt = conn.prepareStatement("INSERT INTO BankAccounts (accountHolderName,Balance) VALUES(?,?)",PreparedStatement.RETURN_GENERATED_KEYS)) {
+            PreparedStatement pstmt = conn.prepareStatement("INSERT INTO \"BankAccounts\" (accountHolderName,Balance) VALUES(?,?)",PreparedStatement.RETURN_GENERATED_KEYS)) {
                 
             pstmt.setString(1, account.getAccountHolderName());
             pstmt.setDouble(2, 0);
@@ -107,7 +107,7 @@ public class DBmanage {
             //DB Connect
             conn=DriverManager.getConnection(DBmanage.url,DBmanage.user,DBmanage.password);
             stmt=conn.createStatement();
-            String sql="SELECT * FROM Users";
+            String sql="SELECT * FROM \"Users\"";
             rs=stmt.executeQuery(sql);
             while(rs.next()){
                 User oneUser = new User(rs.getInt("id"));
@@ -151,7 +151,7 @@ public class DBmanage {
         
         if(checkUser){
             try(Connection conn=DriverManager.getConnection(DBmanage.url, DBmanage.user, DBmanage.password);
-                PreparedStatement pstmt = conn.prepareStatement("INSERT INTO Users(name,password) VALUES(?,?)")){
+                PreparedStatement pstmt = conn.prepareStatement("INSERT INTO \"Users\"(name,password) VALUES(?,?)")){
                     pstmt.setString(1, name);
                     pstmt.setString(2, password);
                     pstmt.executeUpdate();
@@ -172,7 +172,7 @@ public class DBmanage {
         boolean passwordChecker=false;
 
         try(Connection conn=DriverManager.getConnection(DBmanage.url, DBmanage.user, DBmanage.password);
-            PreparedStatement pstmt=conn.prepareStatement("SELECT name,password FROM Users WHERE name =?")){
+            PreparedStatement pstmt=conn.prepareStatement("SELECT name,password FROM \"Users\" WHERE name =?")){
                 pstmt.setString(1, name);
                 ResultSet rs=pstmt.executeQuery();
                 if(rs.next()){
